@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Printing Theme - Light, Vibrant, Playful */
+    --printing-bg: 0 0% 98%;
+    --printing-fg: 220 20% 10%;
+    --printing-primary: 15 90% 55%;
+    --printing-primary-foreground: 0 0% 100%;
+    --printing-secondary: 200 70% 50%;
+    --printing-accent: 340 80% 55%;
+    --printing-muted: 220 15% 92%;
+    --printing-muted-foreground: 220 10% 45%;
+    --printing-card: 0 0% 100%;
+    --printing-card-foreground: 220 20% 10%;
+    --printing-border: 220 15% 88%;
+    
+    /* Fabnex Theme - Dark, Industrial, Powerful */
+    --fabnex-bg: 220 20% 8%;
+    --fabnex-fg: 220 10% 95%;
+    --fabnex-primary: 30 95% 50%;
+    --fabnex-primary-foreground: 220 20% 8%;
+    --fabnex-secondary: 210 30% 25%;
+    --fabnex-accent: 200 40% 40%;
+    --fabnex-muted: 220 15% 15%;
+    --fabnex-muted-foreground: 220 10% 60%;
+    --fabnex-card: 220 20% 12%;
+    --fabnex-card-foreground: 220 10% 95%;
+    --fabnex-border: 220 15% 20%;
+    
+    /* Default (Entry) - Neutral */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 30 95% 50%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 15 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 30 95% 50%;
+    --radius: 0.75rem;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .printing-theme {
+    --background: var(--printing-bg);
+    --foreground: var(--printing-fg);
+    --card: var(--printing-card);
+    --card-foreground: var(--printing-card-foreground);
+    --popover: var(--printing-card);
+    --popover-foreground: var(--printing-card-foreground);
+    --primary: var(--printing-primary);
+    --primary-foreground: var(--printing-primary-foreground);
+    --secondary: 200 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: var(--printing-muted);
+    --muted-foreground: var(--printing-muted-foreground);
+    --accent: var(--printing-accent);
+    --accent-foreground: 0 0% 100%;
+    --border: var(--printing-border);
+    --input: var(--printing-border);
+    --ring: var(--printing-primary);
+  }
+
+  .fabnex-theme {
+    --background: var(--fabnex-bg);
+    --foreground: var(--fabnex-fg);
+    --card: var(--fabnex-card);
+    --card-foreground: var(--fabnex-card-foreground);
+    --popover: var(--fabnex-card);
+    --popover-foreground: var(--fabnex-card-foreground);
+    --primary: var(--fabnex-primary);
+    --primary-foreground: var(--fabnex-primary-foreground);
+    --secondary: var(--fabnex-secondary);
+    --secondary-foreground: var(--fabnex-fg);
+    --muted: var(--fabnex-muted);
+    --muted-foreground: var(--fabnex-muted-foreground);
+    --accent: var(--fabnex-accent);
+    --accent-foreground: var(--fabnex-fg);
+    --border: var(--fabnex-border);
+    --input: var(--fabnex-border);
+    --ring: var(--fabnex-primary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border border-border/20;
+    background: hsl(var(--card) / 0.8);
+  }
+
+  .gradient-text-printing {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--printing-primary)), hsl(var(--printing-secondary)), hsl(var(--printing-accent)));
+  }
+
+  .gradient-text-fabnex {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--fabex-primary)), hsl(var(--fabex-accent)));
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.3);
+  }
+
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-24 lg:py-32;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  .animate-spark {
+    animation: spark 1.5s ease-out infinite;
+  }
+
+  @keyframes spark {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .split-hover-left {
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .split-hover-right {
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

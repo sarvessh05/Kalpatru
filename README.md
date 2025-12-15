@@ -80,4 +80,4 @@ The built files will be in the `dist` directory, ready for deployment to any sta
 
 ## License
 
-© 2024 Kalpatru Group. All rights reserved.
+© 2025 Kalpatru Group. All rights reserved.
